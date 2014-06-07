@@ -41,7 +41,7 @@ let FindRange low high mid test =
         | CompareResult.COMPARE_TOO_LARGE -> binarySearch low 
                                                           (mid - 1)
                                                           compare
-        | CompareResult.COMPARE_TOO_SMALL -> binarySearch (mid + 1) 
+        | CompareResult.COMPARE_TOO_SMALL -> binarySearch (mid + 1)
                                                           high
                                                           compare
         | CompareResult.COMPARE_HIT | _   -> mid
