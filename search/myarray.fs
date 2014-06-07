@@ -14,11 +14,12 @@ let rec BinarySearch (array: 'a[]) index length (value: 'a) compare =
     else
         let halfInterval = (length + 1) / 2
         let mid = index + halfInterval
-        let midcomp = compare array.[mid] value
-        if midcomp = 0 then
-            BinarySearch array mid 0 value compare
-        elif midcomp > 0 then
-            BinarySearch array index (mid - index)          value compare
-        else
-            BinarySearch array mid   (index + length - mid) value compare
+        match (compare array.[mid] value) with
+        | 0            -> BinarySearch array mid 0 value compare
+        | x when x > 0 -> BinarySearch array 
+                                       index (mid - index)
+                                       value compare
+        | _            -> BinarySearch array 
+                                       mid   (index + length - mid) 
+                                       value compare
         
